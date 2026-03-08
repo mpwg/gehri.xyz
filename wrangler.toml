@@ -2,6 +2,15 @@ name = "gehri-xyz"
 main = "./dist/_worker.js/index.js"
 compatibility_date = "2026-03-08"
 compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[[routes]]
+pattern = "gehri.xyz"
+custom_domain = true
+
+[[routes]]
+pattern = "www.gehri.xyz"
+custom_domain = true
 
 [assets]
 directory = "./dist"

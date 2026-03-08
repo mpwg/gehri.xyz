@@ -1,0 +1,123 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const projects = [
+  {
+    name: 'Zagreus',
+    href: 'https://github.com/mpwg/zagreus',
+    description:
+      'Eine App fuer das Management von Medien-Stacks rund um Plex, Radarr, Sonarr und verwandte Dienste.',
+  },
+  {
+    name: 'Alles-Teurer',
+    href: 'https://github.com/mpwg/Alles-Teurer',
+    description:
+      'Ein pragmatisches Produkt rund um Preisbeobachtung und alltagstaugliche Transparenz bei Kostenveraenderungen.',
+  },
+  {
+    name: 'WienerNetzeHomeAssist',
+    href: 'https://github.com/mpwg/WienerNetzeHomeAssist',
+    description:
+      'Integration fuer Home Assistant, die Energiedaten nutzbar macht und technische Komplexitaet auf ein sinnvolles Mass reduziert.',
+  },
+];
+
+const contacts = [
+  {
+    label: 'GitHub',
+    href: 'https://github.com/mpwg',
+    handle: '@mpwg',
+  },
+  {
+    label: 'E-Mail',
+    href: 'mailto:hello@gehri.xyz',
+    handle: 'hello@gehri.xyz',
+  },
+];
+---
+
+<SiteLayout>
+  <header class="site-header">
+    <div class="brand">Matthias Géhri</div>
+    <nav aria-label="Hauptnavigation">
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#projekte">Projekte</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Persönliche Webseite</p>
+        <h1>Ich entwickle digitale Produkte mit klarem Fokus auf Nutzbarkeit, Struktur und Tempo.</h1>
+        <p class="lede">
+          Diese Seite ist bewusst knapp gehalten: wer ich bin, wie man mich erreicht und an welchen
+          Projekten ich arbeite.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#kontakt">Kontakt aufnehmen</a>
+          <a class="button button-secondary" href="#projekte">Projekte ansehen</a>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <img
+          class="portrait"
+          src="/profile.png"
+          alt="Porträt von Matthias Géhri"
+          width="1024"
+          height="1024"
+        />
+      </div>
+    </section>
+
+    <section id="ueber-mich" class="panel about">
+      <div class="section-head">
+        <p class="section-tag">Über mich</p>
+        <h2>Technik ist für mich dann gut, wenn sie konkret hilft.</h2>
+      </div>
+      <div class="about-grid">
+        <p>
+          Ich arbeite an digitalen Produkten, Software-Ideen und technischen Systemen, die im Alltag
+          tatsächlich verwendbar sein sollen. Mich interessieren weniger Schlagworte als saubere
+          Entscheidungen, nachvollziehbare Architektur und Ergebnisse, die dauerhaft tragfähig sind.
+        </p>
+        <p>
+          Inhaltlich bewege ich mich oft zwischen Produktdenken, Automatisierung und technischer
+          Umsetzung. Dabei geht es mir um Reduktion von Komplexität, ohne Relevantes zu verlieren.
+        </p>
+      </div>
+    </section>
+
+    <section id="kontakt" class="panel contact">
+      <div class="section-head">
+        <p class="section-tag">Kontakt</p>
+        <h2>Direkte Wege statt Formular-Strecke.</h2>
+      </div>
+      <div class="contact-list">
+        {contacts.map((contact) => (
+          <a class="contact-card" href={contact.href} target={contact.href.startsWith('http') ? '_blank' : undefined} rel={contact.href.startsWith('http') ? 'noreferrer' : undefined}>
+            <span class="contact-label">{contact.label}</span>
+            <strong>{contact.handle}</strong>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="projekte" class="panel projects">
+      <div class="section-head">
+        <p class="section-tag">Projekte</p>
+        <h2>Ausgewählte Arbeiten mit technischem und produktivem Anspruch.</h2>
+      </div>
+      <div class="project-grid">
+        {projects.map((project) => (
+          <article class="project-card">
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+            <a href={project.href} target="_blank" rel="noreferrer">Projekt öffnen</a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</SiteLayout>

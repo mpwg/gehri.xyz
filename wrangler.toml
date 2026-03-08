@@ -1,0 +1,12 @@
+name = "gehri-xyz"
+main = "./dist/_worker.js/index.js"
+compatibility_date = "2026-03-08"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = true
+
+[observability.logs]
+enabled = true

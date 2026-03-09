@@ -70,9 +70,23 @@ fi
 gh secret set CLOUDFLARE_ACCOUNT_ID --repo "$REPO_SLUG" --body "$ACCOUNT_ID"
 gh secret set CLOUDFLARE_API_TOKEN --repo "$REPO_SLUG" --body "$API_TOKEN"
 
+if [ -n "${GITHUB_OAUTH_ID:-}" ]; then
+  gh secret set GITHUB_OAUTH_ID --repo "$REPO_SLUG" --body "$GITHUB_OAUTH_ID"
+fi
+
+if [ -n "${GITHUB_OAUTH_SECRET:-}" ]; then
+  gh secret set GITHUB_OAUTH_SECRET --repo "$REPO_SLUG" --body "$GITHUB_OAUTH_SECRET"
+fi
+
 echo "GitHub Secrets gesetzt fuer $REPO_SLUG"
 echo "  CLOUDFLARE_ACCOUNT_ID=$ACCOUNT_ID"
 echo "  CLOUDFLARE_API_TOKEN=<redacted>"
+if [ -n "${GITHUB_OAUTH_ID:-}" ]; then
+  echo "  GITHUB_OAUTH_ID=<redacted>"
+fi
+if [ -n "${GITHUB_OAUTH_SECRET:-}" ]; then
+  echo "  GITHUB_OAUTH_SECRET=<redacted>"
+fi
 echo
 echo "Naechster Schritt:"
 echo "  git push origin main"

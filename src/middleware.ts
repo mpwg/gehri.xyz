@@ -1,65 +1,78 @@
-import type { MiddlewareHandler } from 'astro';
+import { defineMiddleware } from 'astro:middleware';
 
-function buildCsp(pathname: string) {
-  const isAdminRoute = pathname.startsWith('/admin');
+const nonceDirective = (nonce: string) => `'nonce-${nonce}'`;
 
-  if (isAdminRoute) {
-    return [
-      "default-src 'self'",
-      "base-uri 'self'",
-      "object-src 'none'",
-      "frame-ancestors 'self'",
-      "form-action 'self' https://github.com https://cms-auth.gehri.xyz",
-      "script-src 'self' https://unpkg.com",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https:",
-      "font-src 'self' data:",
-      "connect-src 'self' https://api.github.com https://github.com https://cms-auth.gehri.xyz",
-      "frame-src 'self' https://github.com",
-    ].join('; ');
-  }
+const ADMIN_CSP = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  "img-src 'self' data: https:",
+  "font-src 'self' data:",
+  "style-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com",
+  "connect-src 'self' https://api.github.com https://github.com https://cms-auth.gehri.xyz",
+  "frame-src 'self' https://github.com",
+  'upgrade-insecure-requests',
+].join('; ');
 
-  return [
+const buildDefaultCsp = (nonce: string) =>
+  [
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
     "frame-ancestors 'self'",
     "form-action 'self'",
-    "script-src 'self'",
-    "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https:",
     "font-src 'self' data:",
+    "style-src 'self' 'unsafe-inline'",
+    `script-src 'self' ${nonceDirective(nonce)}`,
     "connect-src 'self'",
-    "upgrade-insecure-requests",
+    "frame-src 'self'",
+    'upgrade-insecure-requests',
   ].join('; ');
-}
 
-function applySecurityHeaders(response: Response, pathname: string) {
-  const isAdminRoute = pathname.startsWith('/admin');
-
-  response.headers.set('Content-Security-Policy', buildCsp(pathname));
-  response.headers.set('X-Frame-Options', 'SAMEORIGIN');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set(
-    'Permissions-Policy',
-    'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
-  );
-  response.headers.set(
-    'Cross-Origin-Embedder-Policy',
-    isAdminRoute ? 'unsafe-none' : 'require-corp',
-  );
-  response.headers.set(
-    'Cross-Origin-Opener-Policy',
-    isAdminRoute ? 'same-origin-allow-popups' : 'same-origin',
-  );
-  response.headers.set(
-    'Cross-Origin-Resource-Policy',
-    isAdminRoute ? 'same-site' : 'same-origin',
-  );
-}
-
-export const onRequest: MiddlewareHandler = async (context, next) => {
-  const response = await next();
-  applySecurityHeaders(response, context.url.pathname);
-  return response;
+const generateNonce = () => {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return btoa(String.fromCharCode(...bytes));
 };
+
+export const onRequest = defineMiddleware(async (context, next) => {
+  const nonce = generateNonce();
+  context.locals.cspNonce = nonce;
+
+  const response = await next();
+  const headers = new Headers(response.headers);
+  const isAdminRoute = context.url.pathname.startsWith('/admin');
+
+  headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  headers.set('X-Frame-Options', 'SAMEORIGIN');
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  headers.set(
+    'Permissions-Policy',
+    'accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
+  );
+  headers.set('Cross-Origin-Resource-Policy', 'same-site');
+
+  if (isAdminRoute) {
+    headers.set('Cross-Origin-Opener-Policy', 'unsafe-none');
+    headers.set('Cross-Origin-Embedder-Policy', 'unsafe-none');
+  } else {
+    headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+    headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+  }
+
+  const contentType = headers.get('content-type') ?? '';
+  if (contentType.includes('text/html')) {
+    headers.set('Content-Security-Policy', isAdminRoute ? ADMIN_CSP : buildDefaultCsp(nonce));
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+});

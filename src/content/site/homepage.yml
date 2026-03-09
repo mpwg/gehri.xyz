@@ -29,14 +29,14 @@ sections:
         interessieren weniger Schlagworte als saubere Entscheidungen,
         nachvollziehbare Architektur und Ergebnisse, die dauerhaft tragfaehig
         sind.
-      - Inhaltlich bewege ich mich oft zwischen Produktdenken, Automatisierung und
-        technischer Umsetzung. Dabei geht es mir um Reduktion von Komplexitaet,
-        ohne Relevantes zu verlieren.
+      - Inhaltlich bewege ich mich oft zwischen Produktdenken, Automatisierung
+        und technischer Umsetzung. Dabei geht es mir um Reduktion von
+        Komplexitaet, ohne Relevantes zu verlieren.
   - type: links
     id: kontakt
     navLabel: Kontakt
     tag: Kontakt
-    title: Direkte Wege statt Formular-Strecke.
+    title: Direkter Kontakt
     items:
       - label: GitHub
         href: https://github.com/mpwg
@@ -57,6 +57,6 @@ sections:
         ctaLabel: Projekt öffnen
       - name: WienerNetzeHomeAssist
         href: https://github.com/mpwg/WienerNetzeHomeAssist
-        description: Integration fuer Home Assistant, die Energiedaten nutzbar
-          macht und technische Komplexitaet auf ein sinnvolles Mass reduziert.
+        description: Integration fuer Home Assistant, die Energiedaten nutzbar macht und
+          technische Komplexitaet auf ein sinnvolles Mass reduziert.
         ctaLabel: Projekt öffnen

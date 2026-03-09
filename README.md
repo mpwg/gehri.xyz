@@ -33,8 +33,8 @@ Wie bei `bindungsschatz.at` nutzt das CMS den GitHub-Backend-Flow ueber einen se
 Einmalig noetig:
 
 ```bash
-export GITHUB_OAUTH_ID=...
-export GITHUB_OAUTH_SECRET=...
+export CMS_OAUTH_ID=...
+export CMS_OAUTH_SECRET=...
 npm run setup:github-deploy
 ```
 
@@ -44,7 +44,7 @@ Zusätzlich brauchst du eine GitHub OAuth App mit Callback URL:
 https://cms-auth.gehri.xyz/callback
 ```
 
-Danach deployed [.github/workflows/deploy-cms-auth.yml](/Users/mat/code/gehri.xyz/.github/workflows/deploy-cms-auth.yml) den OAuth-Worker automatisch aus GitHub heraus. Die Worker-Secrets `GITHUB_OAUTH_ID` und `GITHUB_OAUTH_SECRET` werden dabei aus GitHub Secrets in Cloudflare geschrieben, wie vom offiziellen `wrangler-action` unterstuetzt. Ich leite das aus der Wrangler-Action-Doku ab. [Quelle](https://github.com/cloudflare/wrangler-action) [Quelle](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
+Danach deployed [.github/workflows/deploy-cms-auth.yml](/Users/mat/code/gehri.xyz/.github/workflows/deploy-cms-auth.yml) den OAuth-Worker automatisch aus GitHub heraus. Die GitHub-Secrets `CMS_OAUTH_ID` und `CMS_OAUTH_SECRET` werden dabei auf die Cloudflare-Worker-Secrets `GITHUB_OAUTH_ID` und `GITHUB_OAUTH_SECRET` gemappt, wie vom offiziellen `wrangler-action` unterstuetzt. Das ist eine Ableitung aus der Wrangler-Action-Doku. [Quelle](https://github.com/cloudflare/wrangler-action) [Quelle](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
 
 ## GitHub -> Cloudflare Deploy
 
@@ -77,7 +77,7 @@ Das Skript [scripts/bootstrap-github-deploy.sh](/Users/mat/code/gehri.xyz/script
 
 - `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_API_TOKEN`
-- optional `GITHUB_OAUTH_ID`
-- optional `GITHUB_OAUTH_SECRET`
+- optional `CMS_OAUTH_ID`
+- optional `CMS_OAUTH_SECRET`
 
 Danach uebernimmt [.github/workflows/deploy-cloudflare.yml](/Users/mat/code/gehri.xyz/.github/workflows/deploy-cloudflare.yml) jeden Deploy auf `main`.

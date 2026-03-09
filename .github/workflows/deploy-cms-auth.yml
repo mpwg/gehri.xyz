@@ -32,5 +32,5 @@ jobs:
             GITHUB_OAUTH_ID
             GITHUB_OAUTH_SECRET
         env:
-          GITHUB_OAUTH_ID: ${{ secrets.GITHUB_OAUTH_ID }}
-          GITHUB_OAUTH_SECRET: ${{ secrets.GITHUB_OAUTH_SECRET }}
+          GITHUB_OAUTH_ID: ${{ secrets.CMS_OAUTH_ID }}
+          GITHUB_OAUTH_SECRET: ${{ secrets.CMS_OAUTH_SECRET }}

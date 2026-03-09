@@ -1,0 +1,8 @@
+name = "gehri-cms-auth"
+main = "src/index.ts"
+compatibility_date = "2026-03-08"
+route = { pattern = "cms-auth.gehri.xyz", zone_name = "gehri.xyz", custom_domain = true }
+workers_dev = true
+
+[vars]
+GITHUB_REPO_PRIVATE = "0"

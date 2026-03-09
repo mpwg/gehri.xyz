@@ -14,7 +14,7 @@ hero:
     label: Projekte ansehen
     href: "#projekte"
   image:
-    src: /profile.png
+    src: /uploads/profile.webp
     alt: Porträt von Matthias Wallner-Géhri
 sections:
   - type: text

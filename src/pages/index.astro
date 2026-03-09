@@ -60,7 +60,7 @@ const navigation = sections.map((section) => ({
         {section.type === 'links' && (
           <div class="contact-list">
             {section.items.map((entry) => (
-              <a class="contact-card" href={entry.href} target={entry.href.startsWith('http') ? '_blank' : undefined} rel={entry.href.startsWith('http') ? 'noreferrer' : undefined}>
+              <a class="contact-card" href={entry.href} target={entry.href.startsWith('http') ? '_blank' : undefined} rel={entry.href.startsWith('http') ? 'me noreferrer' : 'me'}>
                 <span class="contact-label">{entry.label}</span>
                 <strong>{entry.value}</strong>
               </a>

@@ -1,0 +1,36 @@
+name: Deploy CMS Auth
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "cms-auth/**"
+      - ".github/workflows/deploy-cms-auth.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy cms-auth Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: "cms-auth"
+          command: deploy
+          secrets: |
+            GITHUB_OAUTH_ID
+            GITHUB_OAUTH_SECRET
+        env:
+          GITHUB_OAUTH_ID: ${{ secrets.GITHUB_OAUTH_ID }}
+          GITHUB_OAUTH_SECRET: ${{ secrets.GITHUB_OAUTH_SECRET }}

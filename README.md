@@ -1,12 +1,47 @@
 # gehri.xyz
 
-Persoenliche Astro-Webseite, deployt als Cloudflare Worker.
+Persoenliche Astro-Webseite, deployt als Cloudflare Worker, mit Decap CMS fuer die Bearbeitung der Startseite.
 
 ## Lokal
 
 ```bash
 npm install
 npm run dev
+```
+
+## Inhalte per CMS bearbeiten
+
+- Admin-UI: `/admin`
+- CMS-Konfiguration: [public/admin/config.yml](/Users/mat/code/gehri.xyz/public/admin/config.yml)
+- Bearbeitbare Inhalte: [src/content/site/homepage.yml](/Users/mat/code/gehri.xyz/src/content/site/homepage.yml)
+
+Die Seite liest ihre Inhalte ueber Astro Content Collections aus dem CMS-Dokument. Geaendert werden:
+
+- Hero
+- Ueber mich
+- Kontaktlinks
+- Projekte
+
+### OAuth-Proxy fuer Decap
+
+Wie bei `bindungsschatz.at` nutzt das CMS den GitHub-Backend-Flow ueber einen separaten OAuth-Proxy auf Cloudflare:
+
+- Worker-Code: [cms-auth/src/index.ts](/Users/mat/code/gehri.xyz/cms-auth/src/index.ts)
+- Worker-Konfiguration: [cms-auth/wrangler.toml](/Users/mat/code/gehri.xyz/cms-auth/wrangler.toml)
+- Anleitung: [cms-auth/README.md](/Users/mat/code/gehri.xyz/cms-auth/README.md)
+
+Einmalig noetig:
+
+```bash
+npm run cms-auth:secret:id
+npm run cms-auth:secret:secret
+npm run cms-auth:deploy
+```
+
+Zusätzlich brauchst du eine GitHub OAuth App mit Callback URL:
+
+```text
+https://cms-auth.gehri.xyz/callback
 ```
 
 ## GitHub -> Cloudflare Deploy

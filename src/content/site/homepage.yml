@@ -1,0 +1,35 @@
+title: Matthias Géhri
+description: Persoenliche Webseite von Matthias Géhri mit Kurzprofil, Kontakt und ausgewählten Projekten.
+profileImageAlt: Portraet von Matthias Géhri
+hero:
+  eyebrow: Persoenliche Webseite
+  headline: Ich entwickle digitale Produkte mit klarem Fokus auf Nutzbarkeit, Struktur und Tempo.
+  intro: Diese Seite ist bewusst knapp gehalten. Wer ich bin, wie man mich erreicht und an welchen Projekten ich arbeite.
+  primaryCtaLabel: Kontakt aufnehmen
+  secondaryCtaLabel: Projekte ansehen
+about:
+  title: Technik ist fuer mich dann gut, wenn sie konkret hilft.
+  paragraphs:
+    - Ich arbeite an digitalen Produkten, Software-Ideen und technischen Systemen, die im Alltag tatsaechlich verwendbar sein sollen. Mich interessieren weniger Schlagworte als saubere Entscheidungen, nachvollziehbare Architektur und Ergebnisse, die dauerhaft tragfaehig sind.
+    - Inhaltlich bewege ich mich oft zwischen Produktdenken, Automatisierung und technischer Umsetzung. Dabei geht es mir um Reduktion von Komplexitaet, ohne Relevantes zu verlieren.
+contact:
+  title: Direkte Wege statt Formular-Strecke.
+  links:
+    - label: GitHub
+      href: https://github.com/mpwg
+      handle: "@mpwg"
+    - label: E-Mail
+      href: mailto:hello@gehri.xyz
+      handle: hello@gehri.xyz
+projects:
+  title: Ausgewaehlte Arbeiten mit technischem und produktivem Anspruch.
+  items:
+    - name: Zagreus
+      href: https://github.com/mpwg/zagreus
+      description: Eine App fuer das Management von Medien-Stacks rund um Plex, Radarr, Sonarr und verwandte Dienste.
+    - name: Alles-Teurer
+      href: https://github.com/mpwg/Alles-Teurer
+      description: Ein pragmatisches Produkt rund um Preisbeobachtung und alltagstaugliche Transparenz bei Kostenveraenderungen.
+    - name: WienerNetzeHomeAssist
+      href: https://github.com/mpwg/WienerNetzeHomeAssist
+      description: Integration fuer Home Assistant, die Energiedaten nutzbar macht und technische Komplexitaet auf ein sinnvolles Mass reduziert.

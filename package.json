@@ -8,6 +8,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "deploy": "npm run build && wrangler deploy",
+    "cms-auth:deploy": "wrangler deploy --config cms-auth/wrangler.toml",
+    "cms-auth:secret:id": "wrangler secret put GITHUB_OAUTH_ID --config cms-auth/wrangler.toml",
+    "cms-auth:secret:secret": "wrangler secret put GITHUB_OAUTH_SECRET --config cms-auth/wrangler.toml",
     "astro": "astro",
     "ci:deploy-check": "npm run check && npm run build",
     "setup:github-deploy": "bash ./scripts/bootstrap-github-deploy.sh"

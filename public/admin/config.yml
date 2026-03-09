@@ -1,0 +1,65 @@
+backend:
+  name: github
+  repo: mpwg/gehri.xyz
+  branch: main
+  base_url: https://cms-auth.gehri.xyz
+  auth_endpoint: /auth
+
+site_url: https://gehri.xyz
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: site
+    label: Webseite
+    files:
+      - label: Startseite
+        name: homepage
+        file: src/content/site/homepage.yml
+        fields:
+          - { label: Seitentitel, name: title, widget: string }
+          - { label: SEO Beschreibung, name: description, widget: text }
+          - { label: Alternativtext Profilbild, name: profileImageAlt, widget: string }
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Haupttitel, name: headline, widget: text }
+              - { label: Einleitung, name: intro, widget: text }
+              - { label: Primarer Button, name: primaryCtaLabel, widget: string }
+              - { label: Sekundaerer Button, name: secondaryCtaLabel, widget: string }
+          - label: Ueber mich
+            name: about
+            widget: object
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - label: Abschnitte
+                name: paragraphs
+                widget: list
+                field: { label: Absatz, name: paragraph, widget: text }
+          - label: Kontakt
+            name: contact
+            widget: object
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - label: Links
+                name: links
+                widget: list
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: URL, name: href, widget: string }
+                  - { label: Handle oder Text, name: handle, widget: string }
+          - label: Projekte
+            name: projects
+            widget: object
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - label: Eintraege
+                name: items
+                widget: list
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: URL, name: href, widget: string }
+                  - { label: Beschreibung, name: description, widget: text }

@@ -20,7 +20,7 @@ collections:
         fields:
           - { label: Seitentitel, name: title, widget: string }
           - { label: SEO Beschreibung, name: description, widget: text }
-          - { label: Alternativtext Profilbild, name: profileImageAlt, widget: string }
+          - { label: Brand im Header, name: brand, widget: string }
           - label: Hero
             name: hero
             widget: object
@@ -28,38 +28,90 @@ collections:
               - { label: Eyebrow, name: eyebrow, widget: string }
               - { label: Haupttitel, name: headline, widget: text }
               - { label: Einleitung, name: intro, widget: text }
-              - { label: Primarer Button, name: primaryCtaLabel, widget: string }
-              - { label: Sekundaerer Button, name: secondaryCtaLabel, widget: string }
-          - label: Ueber mich
-            name: about
-            widget: object
-            fields:
-              - { label: Titel, name: title, widget: string }
-              - label: Abschnitte
-                name: paragraphs
-                widget: list
-                field: { label: Absatz, name: paragraph, widget: text }
-          - label: Kontakt
-            name: contact
-            widget: object
-            fields:
-              - { label: Titel, name: title, widget: string }
-              - label: Links
-                name: links
-                widget: list
+              - label: Primaerer Button
+                name: primaryCta
+                widget: object
                 fields:
                   - { label: Label, name: label, widget: string }
-                  - { label: URL, name: href, widget: string }
-                  - { label: Handle oder Text, name: handle, widget: string }
-          - label: Projekte
-            name: projects
-            widget: object
-            fields:
-              - { label: Titel, name: title, widget: string }
-              - label: Eintraege
-                name: items
-                widget: list
+                  - { label: Ziel, name: href, widget: string }
+              - label: Sekundaerer Button
+                name: secondaryCta
+                widget: object
                 fields:
-                  - { label: Name, name: name, widget: string }
-                  - { label: URL, name: href, widget: string }
-                  - { label: Beschreibung, name: description, widget: text }
+                  - { label: Label, name: label, widget: string }
+                  - { label: Ziel, name: href, widget: string }
+              - label: Hero Bild
+                name: image
+                widget: object
+                fields:
+                  - { label: Bild, name: src, widget: image }
+                  - { label: Alternativtext, name: alt, widget: string }
+          - label: Seitenbereiche
+            name: sections
+            widget: list
+            summary: "{{fields.type}} | {{fields.title}}"
+            types:
+              - label: Textbereich
+                name: text
+                widget: object
+                fields:
+                  - { label: Typ, name: type, widget: hidden, default: text }
+                  - { label: Bereichs-ID, name: id, widget: string }
+                  - { label: Navigation, name: navLabel, widget: string }
+                  - { label: Tag, name: tag, widget: string }
+                  - { label: Titel, name: title, widget: string }
+                  - label: Layout
+                    name: layout
+                    widget: select
+                    options:
+                      - { label: Eine Spalte, value: single }
+                      - { label: Zwei Spalten, value: two-column }
+                  - label: Abschnitte
+                    name: paragraphs
+                    widget: list
+                    field: { label: Absatz, name: paragraph, widget: text }
+              - label: Linkbereich
+                name: links
+                widget: object
+                fields:
+                  - { label: Typ, name: type, widget: hidden, default: links }
+                  - { label: Bereichs-ID, name: id, widget: string }
+                  - { label: Navigation, name: navLabel, widget: string }
+                  - { label: Tag, name: tag, widget: string }
+                  - { label: Titel, name: title, widget: string }
+                  - label: Eintraege
+                    name: items
+                    widget: list
+                    fields:
+                      - { label: Label, name: label, widget: string }
+                      - { label: URL, name: href, widget: string }
+                      - { label: Wert, name: value, widget: string }
+              - label: Projektbereich
+                name: projects
+                widget: object
+                fields:
+                  - { label: Typ, name: type, widget: hidden, default: projects }
+                  - { label: Bereichs-ID, name: id, widget: string }
+                  - { label: Navigation, name: navLabel, widget: string }
+                  - { label: Tag, name: tag, widget: string }
+                  - { label: Titel, name: title, widget: string }
+                  - label: Projekte
+                    name: items
+                    widget: list
+                    fields:
+                      - { label: Name, name: name, widget: string }
+                      - { label: URL, name: href, widget: string }
+                      - { label: Beschreibung, name: description, widget: text }
+                      - { label: Button-Label, name: ctaLabel, widget: string, default: Projekt öffnen }
+              - label: Bildbereich
+                name: image
+                widget: object
+                fields:
+                  - { label: Typ, name: type, widget: hidden, default: image }
+                  - { label: Bereichs-ID, name: id, widget: string }
+                  - { label: Navigation, name: navLabel, widget: string }
+                  - { label: Tag, name: tag, widget: string }
+                  - { label: Titel, name: title, widget: string }
+                  - { label: Bild, name: src, widget: image }
+                  - { label: Alternativtext, name: alt, widget: string }
+                  - { label: Bildunterschrift, name: caption, widget: string, required: false }

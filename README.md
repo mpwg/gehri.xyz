@@ -44,7 +44,7 @@ Zusätzlich brauchst du eine GitHub OAuth App mit Callback URL:
 https://cms-auth.gehri.xyz/callback
 ```
 
-Danach deployed [.github/workflows/deploy-cms-auth.yml](/Users/mat/code/gehri.xyz/.github/workflows/deploy-cms-auth.yml) den OAuth-Worker automatisch aus GitHub heraus. Die GitHub-Secrets `CMS_OAUTH_ID` und `CMS_OAUTH_SECRET` werden dabei auf die Cloudflare-Worker-Secrets `GITHUB_OAUTH_ID` und `GITHUB_OAUTH_SECRET` gemappt, wie vom offiziellen `wrangler-action` unterstuetzt. Das ist eine Ableitung aus der Wrangler-Action-Doku. [Quelle](https://github.com/cloudflare/wrangler-action) [Quelle](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
+Danach deployed [.github/workflows/deploy-cms-auth.yml](/Users/mat/code/gehri.xyz/.github/workflows/deploy-cms-auth.yml) den OAuth-Worker automatisch aus GitHub heraus. Der Workflow synchronisiert dabei die GitHub-Secrets `CMS_OAUTH_ID` und `CMS_OAUTH_SECRET` per `wrangler secret bulk` auf die Cloudflare-Worker-Secrets `GITHUB_OAUTH_ID` und `GITHUB_OAUTH_SECRET` und fuehrt danach `wrangler deploy` aus.
 
 ## GitHub -> Cloudflare Deploy
 

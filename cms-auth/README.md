@@ -29,3 +29,5 @@ https://cms-auth.gehri.xyz/callback
 ```
 
 In [public/admin/config.yml](/Users/mat/code/gehri.xyz/public/admin/config.yml) ist der passende Endpunkt bereits eingetragen.
+
+Da das Repository privat ist, muss in [cms-auth/wrangler.toml](/Users/mat/code/gehri.xyz/cms-auth/wrangler.toml) `GITHUB_REPO_PRIVATE = "1"` gesetzt sein. Dann fordert der OAuth-Flow den Scope `repo,user` statt `public_repo,user` an.

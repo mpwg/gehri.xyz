@@ -48,7 +48,7 @@ sections:
     id: projekte
     navLabel: Projekte
     tag: Projekte
-    title: Ausgewählte Arbeiten mit technischem und produktivem Anspruch.
+    title: Ausgewählte Arbeiten
     items:
       - name: Alles-Teurer
         href: https://github.com/mpwg/Alles-Teurer

@@ -5,4 +5,4 @@ route = { pattern = "cms-auth.gehri.xyz", zone_name = "gehri.xyz", custom_domain
 workers_dev = true
 
 [vars]
-GITHUB_REPO_PRIVATE = "0"
+GITHUB_REPO_PRIVATE = "1"

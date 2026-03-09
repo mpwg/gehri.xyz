@@ -7,24 +7,18 @@ if (!page) {
   throw new Error('Content entry "homepage" not found in site collection');
 }
 
-const {
-  title,
-  description,
-  hero,
-  about,
-  contact,
-  projects,
-  profileImageAlt,
-} = page.data;
+const { title, description, brand, hero, sections } = page.data;
+const navigation = sections.map((section) => ({
+  id: section.id,
+  label: section.navLabel,
+}));
 ---
 
 <SiteLayout title={title} description={description}>
   <header class="site-header">
-    <div class="brand">Matthias Géhri</div>
+    <div class="brand">{brand}</div>
     <nav aria-label="Hauptnavigation">
-      <a href="#ueber-mich">Über mich</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="#projekte">Projekte</a>
+      {navigation.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
     </nav>
   </header>
 
@@ -35,60 +29,64 @@ const {
         <h1>{hero.headline}</h1>
         <p class="lede">{hero.intro}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#kontakt">{hero.primaryCtaLabel}</a>
-          <a class="button button-secondary" href="#projekte">{hero.secondaryCtaLabel}</a>
+          <a class="button button-primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+          <a class="button button-secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
         </div>
       </div>
       <div class="portrait-wrap">
         <img
           class="portrait"
-          src="/profile.png"
-          alt={profileImageAlt}
+          src={hero.image.src}
+          alt={hero.image.alt}
           width="1024"
           height="1024"
         />
       </div>
     </section>
 
-    <section id="ueber-mich" class="panel about">
-      <div class="section-head">
-        <p class="section-tag">Über mich</p>
-        <h2>{about.title}</h2>
-      </div>
-      <div class="about-grid">
-        {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-    </section>
+    {sections.map((section) => (
+      <section id={section.id} class={`panel panel-${section.type}`}>
+        <div class="section-head">
+          <p class="section-tag">{section.tag}</p>
+          <h2>{section.title}</h2>
+        </div>
 
-    <section id="kontakt" class="panel contact">
-      <div class="section-head">
-        <p class="section-tag">Kontakt</p>
-        <h2>{contact.title}</h2>
-      </div>
-      <div class="contact-list">
-        {contact.links.map((entry) => (
-          <a class="contact-card" href={entry.href} target={entry.href.startsWith('http') ? '_blank' : undefined} rel={entry.href.startsWith('http') ? 'noreferrer' : undefined}>
-            <span class="contact-label">{entry.label}</span>
-            <strong>{entry.handle}</strong>
-          </a>
-        ))}
-      </div>
-    </section>
+        {section.type === 'text' && (
+          <div class={`text-grid text-grid-${section.layout}`}>
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        )}
 
-    <section id="projekte" class="panel projects">
-      <div class="section-head">
-        <p class="section-tag">Projekte</p>
-        <h2>{projects.title}</h2>
-      </div>
-      <div class="project-grid">
-        {projects.items.map((project) => (
-          <article class="project-card">
-            <h3>{project.name}</h3>
-            <p>{project.description}</p>
-            <a href={project.href} target="_blank" rel="noreferrer">Projekt öffnen</a>
-          </article>
-        ))}
-      </div>
-    </section>
+        {section.type === 'links' && (
+          <div class="contact-list">
+            {section.items.map((entry) => (
+              <a class="contact-card" href={entry.href} target={entry.href.startsWith('http') ? '_blank' : undefined} rel={entry.href.startsWith('http') ? 'me noreferrer' : 'me'}>
+                <span class="contact-label">{entry.label}</span>
+                <strong>{entry.value}</strong>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {section.type === 'projects' && (
+          <div class="project-grid">
+            {section.items.map((project) => (
+              <article class="project-card">
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+                <a href={project.href} target="_blank" rel="noreferrer">{project.ctaLabel}</a>
+              </article>
+            ))}
+          </div>
+        )}
+
+        {section.type === 'image' && (
+          <figure class="image-block">
+            <img class="feature-image" src={section.src} alt={section.alt} />
+            {section.caption && <figcaption>{section.caption}</figcaption>}
+          </figure>
+        )}
+      </section>
+    ))}
   </main>
 </SiteLayout>

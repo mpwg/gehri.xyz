@@ -85,10 +85,15 @@ img {
 }
 
 .site-header nav a,
-.brand {
+.brand,
+.brand-link {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.78rem;
+}
+
+.brand-link {
+  text-decoration: none;
 }
 
 .site-header nav a {
@@ -99,7 +104,8 @@ img {
   background: rgba(120, 33, 5, 0.36);
 }
 
-.brand {
+.brand,
+.brand-link {
   font-weight: 700;
   color: rgb(var(--accent-soft));
 }
@@ -361,6 +367,60 @@ h3 {
   color: rgb(var(--muted));
 }
 
+.site-footer {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto 2.5rem;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(var(--line), 0.42);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(109, 29, 5, 0.7), rgba(58, 15, 3, 0.82));
+  box-shadow: var(--shadow);
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.legal-shell {
+  margin-top: 2rem;
+}
+
+.legal-panel {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.legal-warning {
+  margin-top: 1.4rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(var(--accent-soft), 0.55);
+  background: rgba(255, 176, 54, 0.12);
+  color: rgb(var(--ink));
+}
+
+.legal-copy {
+  margin-top: 1.8rem;
+  display: grid;
+  gap: 1.6rem;
+  max-width: 56rem;
+}
+
+.legal-copy h2 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.1;
+}
+
+.legal-copy p {
+  margin: 0.75rem 0 0;
+  color: rgb(var(--muted));
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -407,6 +467,12 @@ h3 {
   .site-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .site-footer {
+    width: min(100%, calc(100% - 1rem));
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .site-header nav {

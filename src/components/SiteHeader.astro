@@ -1,0 +1,20 @@
+---
+interface LinkItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  brand: string;
+  links: LinkItem[];
+}
+
+const { brand, links } = Astro.props;
+---
+
+<header class="site-header">
+  <a class="brand-link" href="/">{brand}</a>
+  <nav aria-label="Hauptnavigation">
+    {links.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+</header>

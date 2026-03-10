@@ -1,0 +1,140 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { LEGAL_NOTICE, legalHasPlaceholders } from '../legal';
+
+const links = [
+  { href: '/', label: 'Startseite' },
+  { href: '/impressum', label: 'Impressum' },
+];
+---
+
+<SiteLayout
+  title="Datenschutz | Matthias Wallner-Géhri"
+  description="Datenschutzhinweise der Webseite gehri.xyz"
+>
+  <SiteHeader brand="Matthias Wallner-Géhri" links={links} />
+
+  <main class="page-shell legal-shell">
+    <section class="panel legal-panel">
+      <div class="section-head">
+        <p class="section-tag">Rechtliches</p>
+        <h1>Datenschutz</h1>
+      </div>
+
+      {legalHasPlaceholders && (
+        <div class="legal-warning" role="note">
+          Die verantwortliche Kontaktadresse ist noch als Platzhalter hinterlegt und muss vor
+          produktiver Nutzung ersetzt werden.
+        </div>
+      )}
+
+      <div class="legal-copy">
+        <section>
+          <h2>Verantwortlicher</h2>
+          <p>
+            {LEGAL_NOTICE.ownerName}
+            <br />
+            {LEGAL_NOTICE.address}
+            <br />
+            {LEGAL_NOTICE.email}
+          </p>
+        </section>
+
+        <section>
+          <h2>Allgemeines</h2>
+          <p>
+            Diese Webseite informiert ueber eine Person und deren Projekte. Es gibt auf der
+            oeffentlichen Webseite kein Kontaktformular, keine Kommentarfunktion und keine
+            Registrierung fuer Nutzerkonten.
+          </p>
+        </section>
+
+        <section>
+          <h2>Zugriff auf die Webseite</h2>
+          <p>
+            Beim Aufruf der Webseite verarbeitet der Hosting-Anbieter technisch erforderliche
+            Verbindungsdaten, etwa IP-Adresse, Zeitpunkt des Zugriffs, angeforderte Ressource,
+            uebertragene Datenmenge, Referrer sowie Informationen zu Browser und Betriebssystem.
+            Die Verarbeitung erfolgt zur Bereitstellung, Stabilitaet und Sicherheit der Webseite.
+          </p>
+        </section>
+
+        <section>
+          <h2>Hosting ueber Cloudflare</h2>
+          <p>
+            Die Webseite wird ueber Cloudflare bereitgestellt. Dabei kann es zu einer Verarbeitung
+            personenbezogener Daten auf Servern von Cloudflare kommen, insbesondere von
+            Verbindungs- und Protokolldaten. Rechtsgrundlage ist das berechtigte Interesse an einem
+            sicheren und effizienten Betrieb der Webseite gemaess Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+        </section>
+
+        <section>
+          <h2>Admin-Bereich und CMS</h2>
+          <p>
+            Unter <code>/admin</code> wird ein passwortgeschuetzter Verwaltungsbereich mit Decap CMS
+            bereitgestellt. Dort werden zur Anmeldung und Inhaltsbearbeitung technische Daten ueber
+            GitHub, den eingesetzten OAuth-Proxy sowie das CMS-Skript von unpkg.com verarbeitet. Der
+            Bereich richtet sich nicht an die allgemeine Oeffentlichkeit.
+          </p>
+        </section>
+
+        <section>
+          <h2>Cookies und lokale Speicherung</h2>
+          <p>
+            Auf der oeffentlich zugänglichen Webseite werden nach aktuellem Stand keine eigenen,
+            nicht technisch erforderlichen Cookies fuer Tracking oder Marketing gesetzt. Im
+            geschuetzten CMS-Bereich koennen technisch erforderliche Speichermechanismen verwendet
+            werden, damit die Anmeldung und Bearbeitung funktionieren.
+          </p>
+        </section>
+
+        <section>
+          <h2>Externe Links</h2>
+          <p>
+            Die Webseite verlinkt auf externe Profile und Projekte, insbesondere auf GitHub und
+            Mastodon. Beim Anklicken dieser Links verlassen Sie diese Webseite; ab diesem Zeitpunkt
+            gelten die Datenschutzbestimmungen des jeweiligen Anbieters.
+          </p>
+        </section>
+
+        <section>
+          <h2>Rechtsgrundlagen</h2>
+          <p>
+            Die Verarbeitung erfolgt, soweit technisch notwendig, zur Vertragserfuellung bzw.
+            Bereitstellung des Onlineangebots sowie im uebrigen auf Grundlage berechtigter
+            Interessen gemaess Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+        </section>
+
+        <section>
+          <h2>Speicherdauer</h2>
+          <p>
+            Personenbezogene Daten werden nur so lange gespeichert, wie dies fuer den technischen
+            Betrieb, die Sicherheit oder gesetzliche Aufbewahrungspflichten erforderlich ist. Auf
+            konkrete Speicherfristen des Hosting- und Plattformanbieters hat der Seitenbetreiber nur
+            begrenzten Einfluss.
+          </p>
+        </section>
+
+        <section>
+          <h2>Betroffenenrechte</h2>
+          <p>
+            Betroffene Personen haben nach Massgabe der DSGVO das Recht auf Auskunft, Berichtigung,
+            Loeschung, Einschraenkung der Verarbeitung, Datenuebertragbarkeit sowie Widerspruch.
+            Zudem besteht ein Beschwerderecht bei der zustaendigen Datenschutzaufsichtsbehoerde.
+          </p>
+        </section>
+
+        <section>
+          <h2>Kontakt in Datenschutzfragen</h2>
+          <p>{LEGAL_NOTICE.email}</p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</SiteLayout>

@@ -1,5 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 
 const page = await getEntry('site', 'homepage');
@@ -12,15 +14,15 @@ const navigation = sections.map((section) => ({
   id: section.id,
   label: section.navLabel,
 }));
+const headerLinks = [
+  ...navigation.map((item) => ({ href: `#${item.id}`, label: item.label })),
+  { href: '/impressum', label: 'Impressum' },
+  { href: '/datenschutz', label: 'Datenschutz' },
+];
 ---
 
 <SiteLayout title={title} description={description}>
-  <header class="site-header">
-    <div class="brand">{brand}</div>
-    <nav aria-label="Hauptnavigation">
-      {navigation.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
-    </nav>
-  </header>
+  <SiteHeader brand={brand} links={headerLinks} />
 
   <section class="top-banner" aria-label="Banner">
     <img
@@ -99,4 +101,6 @@ const navigation = sections.map((section) => ({
       </section>
     ))}
   </main>
+
+  <SiteFooter />
 </SiteLayout>

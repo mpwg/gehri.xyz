@@ -1,0 +1,99 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { LEGAL_NOTICE, legalHasPlaceholders } from '../legal';
+
+const links = [
+  { href: '/', label: 'Startseite' },
+  { href: '/datenschutz', label: 'Datenschutz' },
+];
+---
+
+<SiteLayout title="Impressum | Matthias Wallner-Géhri" description="Impressum der Webseite gehri.xyz">
+  <SiteHeader brand="Matthias Wallner-Géhri" links={links} />
+
+  <main class="page-shell legal-shell">
+    <section class="panel legal-panel">
+      <div class="section-head">
+        <p class="section-tag">Rechtliches</p>
+        <h1>Impressum</h1>
+      </div>
+
+      {legalHasPlaceholders && (
+        <div class="legal-warning" role="note">
+          Pflichtangaben sind vorbereitet, aber noch nicht vollstaendig. Vor Live-Betrieb muessen
+          Anschrift und direkte Kontaktadresse ersetzt werden.
+        </div>
+      )}
+
+      <div class="legal-copy">
+        <section>
+          <h2>Angaben gemaess § 5 ECG, § 24 Mediengesetz</h2>
+          <p>
+            <strong>Medieninhaber und Herausgeber:</strong><br />
+            {LEGAL_NOTICE.ownerName}
+          </p>
+          <p>
+            <strong>Anschrift:</strong><br />
+            {LEGAL_NOTICE.address}
+          </p>
+          <p>
+            <strong>E-Mail:</strong><br />
+            {LEGAL_NOTICE.email}
+          </p>
+          <p>
+            <strong>Telefon:</strong><br />
+            {LEGAL_NOTICE.phone}
+          </p>
+        </section>
+
+        <section>
+          <h2>Unternehmensgegenstand</h2>
+          <p>{LEGAL_NOTICE.businessPurpose}</p>
+        </section>
+
+        <section>
+          <h2>Redaktionell verantwortlich</h2>
+          <p>{LEGAL_NOTICE.editorResponsible}</p>
+        </section>
+
+        <section>
+          <h2>Grundlegende Richtung</h2>
+          <p>
+            Diese Webseite dient der Information ueber die Person Matthias Wallner-Géhri,
+            ausgewaehlte Projekte und oeffentliche Kontaktmoeglichkeiten.
+          </p>
+        </section>
+
+        <section>
+          <h2>Haftung fuer Inhalte</h2>
+          <p>
+            Die Inhalte dieser Webseite werden mit angemessener Sorgfalt erstellt. Fuer
+            Richtigkeit, Vollstaendigkeit und Aktualitaet wird jedoch keine Gewaehr uebernommen.
+          </p>
+        </section>
+
+        <section>
+          <h2>Haftung fuer Links</h2>
+          <p>
+            Diese Webseite enthaelt Links zu externen Angeboten, insbesondere zu GitHub und
+            Mastodon. Fuer deren Inhalte sind ausschliesslich die jeweiligen Betreiber
+            verantwortlich.
+          </p>
+        </section>
+
+        <section>
+          <h2>Urheberrecht</h2>
+          <p>
+            Sofern nicht anders angegeben, unterliegen die auf dieser Webseite veroeffentlichten
+            Inhalte dem Urheberrecht des Seitenbetreibers. Eine Nutzung ausserhalb der gesetzlichen
+            Schranken bedarf der vorherigen Zustimmung.
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</SiteLayout>

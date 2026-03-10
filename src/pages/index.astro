@@ -33,14 +33,25 @@ const navigation = sections.map((section) => ({
           <a class="button button-secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
         </div>
       </div>
-      <div class="portrait-wrap">
-        <img
-          class="portrait"
-          src={hero.image.src}
-          alt={hero.image.alt}
-          width="1024"
-          height="1024"
-        />
+      <div class="hero-visual">
+        <figure class="banner-frame">
+          <img
+            class="hero-banner"
+            src="/uploads/banner.webp"
+            alt="Abstraktes Banner mit blau-oranger Energieform"
+            width="1600"
+            height="900"
+          />
+        </figure>
+        <div class="portrait-wrap">
+          <img
+            class="portrait"
+            src={hero.image.src}
+            alt={hero.image.alt}
+            width="1024"
+            height="1024"
+          />
+        </div>
       </div>
     </section>
 

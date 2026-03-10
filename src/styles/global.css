@@ -2,16 +2,16 @@
 @import "@fontsource-variable/sora";
 
 :root {
-  --bg: 31, 10, 5;
-  --bg-deep: 16, 6, 3;
-  --surface: 61, 20, 10;
-  --surface-strong: 88, 31, 15;
+  --bg: 42, 10, 2;
+  --bg-deep: 24, 6, 1;
+  --surface: 104, 27, 4;
+  --surface-strong: 141, 39, 6;
   --ink: 255, 242, 231;
-  --muted: 236, 186, 146;
-  --line: 194, 99, 42;
-  --accent: 255, 126, 24;
-  --accent-dark: 225, 82, 0;
-  --accent-soft: 255, 185, 92;
+  --muted: 255, 196, 142;
+  --line: 255, 120, 18;
+  --accent: 255, 121, 11;
+  --accent-dark: 255, 91, 0;
+  --accent-soft: 255, 176, 54;
   --signal: 56, 132, 222;
   --signal-soft: 126, 192, 255;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
@@ -34,9 +34,9 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   background:
-    radial-gradient(circle at 16% 14%, rgba(var(--accent-soft), 0.22), transparent 24%),
+    radial-gradient(circle at 16% 14%, rgba(var(--accent-soft), 0.28), transparent 24%),
     radial-gradient(circle at 88% 20%, rgba(var(--signal), 0.18), transparent 18%),
-    linear-gradient(180deg, rgba(75, 24, 10, 1) 0%, rgba(var(--bg), 1) 40%, rgba(var(--bg-deep), 1) 100%);
+    linear-gradient(180deg, rgba(110, 28, 3, 1) 0%, rgba(var(--bg), 1) 40%, rgba(var(--bg-deep), 1) 100%);
 }
 
 body::before {
@@ -74,7 +74,7 @@ img {
   gap: 1rem;
   padding: 1rem clamp(1.2rem, 3vw, 2rem);
   backdrop-filter: blur(16px);
-  background: linear-gradient(90deg, rgba(49, 16, 7, 0.84), rgba(32, 10, 4, 0.74));
+  background: linear-gradient(90deg, rgba(88, 22, 3, 0.84), rgba(54, 13, 2, 0.76));
   border-bottom: 1px solid rgba(var(--line), 0.5);
 }
 
@@ -96,7 +96,7 @@ img {
   padding: 0.55rem 0.8rem;
   border: 1px solid rgba(var(--line), 0.45);
   border-radius: 999px;
-  background: rgba(73, 23, 10, 0.44);
+  background: rgba(120, 33, 5, 0.36);
 }
 
 .brand {
@@ -106,7 +106,7 @@ img {
 
 .page-shell {
   width: min(1120px, calc(100% - 2rem));
-  margin: -4.5rem auto 0;
+  margin: -9.5rem auto 0;
   padding: 0 0 4rem;
   position: relative;
   z-index: 2;
@@ -115,7 +115,7 @@ img {
 .top-banner {
   position: relative;
   width: 100%;
-  height: clamp(240px, 34vw, 520px);
+  height: clamp(180px, 24vw, 340px);
   overflow: hidden;
   border-bottom: 1px solid rgba(var(--line), 0.45);
 }
@@ -125,8 +125,8 @@ img {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(31, 10, 5, 0.3)),
-    linear-gradient(90deg, rgba(25, 9, 4, 0.16), rgba(255, 121, 11, 0.12));
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(42, 10, 2, 0.22)),
+    linear-gradient(90deg, rgba(255, 116, 0, 0.08), rgba(255, 121, 11, 0.2));
 }
 
 .top-banner-image {
@@ -142,7 +142,7 @@ img {
   border: 1px solid rgba(var(--line), 0.5);
   box-shadow: var(--shadow);
   background:
-    linear-gradient(180deg, rgba(var(--surface), 0.82), rgba(var(--surface-strong), 0.74));
+    linear-gradient(180deg, rgba(var(--surface), 0.84), rgba(var(--surface-strong), 0.78));
 }
 
 .hero {
@@ -151,7 +151,7 @@ img {
   gap: clamp(1.25rem, 3vw, 2.5rem);
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: 36px;
-  min-height: min(34rem, 68vh);
+  min-height: min(32rem, 62vh);
   align-items: center;
   animation: rise 700ms ease-out both;
 }
@@ -262,7 +262,7 @@ h3 {
 }
 
 .button-secondary {
-  background: rgba(86, 27, 13, 0.52);
+  background: rgba(120, 33, 5, 0.42);
   color: rgb(var(--ink));
 }
 
@@ -272,7 +272,7 @@ h3 {
   padding: 0.55rem;
   border-radius: 30px;
   border: 1px solid rgba(var(--line), 0.62);
-  background: linear-gradient(180deg, rgba(98, 33, 15, 0.96), rgba(53, 18, 9, 0.92));
+  background: linear-gradient(180deg, rgba(145, 40, 6, 0.96), rgba(84, 23, 4, 0.92));
   box-shadow: 0 22px 42px rgba(0, 0, 0, 0.34);
 }
 
@@ -319,7 +319,7 @@ h3 {
   padding: 1.2rem;
   border-radius: 24px;
   border: 1px solid rgba(var(--line), 0.45);
-  background: linear-gradient(180deg, rgba(88, 29, 14, 0.7), rgba(46, 16, 8, 0.72));
+  background: linear-gradient(180deg, rgba(131, 35, 5, 0.68), rgba(70, 19, 3, 0.74));
   backdrop-filter: blur(12px);
 }
 
@@ -375,7 +375,7 @@ h3 {
 
 @media (max-width: 900px) {
   .page-shell {
-    margin-top: -2.5rem;
+    margin-top: -5rem;
   }
 
   .hero {
@@ -396,6 +396,14 @@ h3 {
 }
 
 @media (max-width: 640px) {
+  .page-shell {
+    margin-top: -3.25rem;
+  }
+
+  .top-banner {
+    height: clamp(150px, 34vw, 220px);
+  }
+
   .site-header {
     align-items: flex-start;
     flex-direction: column;

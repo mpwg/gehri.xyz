@@ -50,6 +50,11 @@ sections:
     tag: Projekte
     title: Ausgewählte Arbeiten
     items:
+      - name: Cubism
+        href: https://cubism.gehri.xyz
+        description: Lokaler Rubik's-Cube-Solver als installierbare Web-App mit
+          Capture, Solve und visuellem Playback direkt im Browser.
+        ctaLabel: Projekt öffnen
       - name: Alles-Teurer
         href: https://github.com/mpwg/Alles-Teurer
         description: Ein pragmatisches Produkt rund um Preisbeobachtung und

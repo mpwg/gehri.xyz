@@ -9,6 +9,10 @@ npm install
 npm run dev
 ```
 
+Node-Version:
+
+- `24.14.1` über [`.node-version`](/Users/mat/code/gehri.xyz/.node-version) und [`.tool-versions`](/Users/mat/code/gehri.xyz/.tool-versions)
+
 ## Inhalte per CMS bearbeiten
 
 - Admin-UI: `/admin`

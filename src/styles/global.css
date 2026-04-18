@@ -391,7 +391,8 @@ h3 {
   margin-top: 2rem;
 }
 
-.legal-panel {
+.legal-panel,
+.app-panel {
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }
 
@@ -409,6 +410,46 @@ h3 {
   display: grid;
   gap: 1.6rem;
   max-width: 56rem;
+}
+
+.app-shell {
+  margin-top: 2rem;
+}
+
+.app-copy {
+  margin-top: 1.8rem;
+  display: grid;
+  gap: 1.6rem;
+  max-width: 58rem;
+}
+
+.app-lede {
+  margin: 0;
+  font-size: clamp(1.08rem, 2.2vw, 1.24rem);
+  color: rgb(var(--muted));
+}
+
+.app-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.app-meta-card {
+  padding: 1.15rem;
+  border-radius: 22px;
+  border: 1px solid rgba(var(--line), 0.45);
+  background: linear-gradient(180deg, rgba(131, 35, 5, 0.68), rgba(70, 19, 3, 0.74));
+}
+
+.app-copy h2 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.1;
+}
+
+.app-copy p {
+  margin: 0.75rem 0 0;
+  color: rgb(var(--muted));
 }
 
 .legal-copy h2 {
@@ -450,7 +491,8 @@ h3 {
 
   .text-grid,
   .project-grid,
-  .contact-list {
+  .contact-list,
+  .app-meta {
     grid-template-columns: 1fr;
   }
 }

@@ -86,7 +86,13 @@ const headerLinks = [
               <article class="project-card">
                 <h3>{project.name}</h3>
                 <p>{project.description}</p>
-                <a href={project.href} target="_blank" rel="noreferrer">{project.ctaLabel}</a>
+                <a
+                  href={project.href}
+                  target={project.href.startsWith('http') ? '_blank' : undefined}
+                  rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
+                >
+                  {project.ctaLabel}
+                </a>
               </article>
             ))}
           </div>

@@ -11,8 +11,8 @@ hero:
     label: Kontakt aufnehmen
     href: "#kontakt"
   secondaryCta:
-    label: Projekte ansehen
-    href: "#projekte"
+    label: Apps ansehen
+    href: "#apps"
   image:
     src: /uploads/profile.webp
     alt: Porträt von Matthias Wallner-Géhri
@@ -44,6 +44,22 @@ sections:
       - label: Mastodon
         href: https://hachyderm.io/@Mpwg
         value: "@Mpwg@hachyderm.io"
+  - type: projects
+    id: apps
+    navLabel: Apps
+    tag: Apps
+    title: Apps im Überblick
+    items:
+      - name: Migräne Tracker
+        href: /apps/migraene-tracker
+        description: Dokumentation und Überblick für Migräneereignisse in einer
+          kompakten, alltagstauglichen App.
+        ctaLabel: Details ansehen
+      - name: Alles Teurer
+        href: /apps/alles-teurer
+        description: Preisveränderungen sichtbar machen und Entwicklungen klarer
+          einordnen.
+        ctaLabel: Details ansehen
   - type: projects
     id: projekte
     navLabel: Projekte

@@ -1,0 +1,69 @@
+---
+import SiteFooter from '../../components/SiteFooter.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const links = [
+  { href: '/', label: 'Startseite' },
+  { href: '/#apps', label: 'Apps' },
+];
+---
+
+<SiteLayout
+  title="Alles Teurer | Matthias Wallner-Géhri"
+  description="Produktseite für die App Alles Teurer von Matthias Wallner-Géhri"
+>
+  <SiteHeader brand="Matthias Wallner-Géhri" links={links} />
+
+  <main class="page-shell app-shell">
+    <section class="panel app-panel">
+      <div class="section-head">
+        <p class="section-tag">App</p>
+        <h1>Alles Teurer</h1>
+      </div>
+
+      <div class="app-copy">
+        <p class="app-lede">
+          Alles Teurer macht Preisveränderungen sichtbarer und schafft eine nüchterne, brauchbare
+          Übersicht über Entwicklungen im Alltag.
+        </p>
+
+        <div class="app-meta">
+          <div class="app-meta-card">
+            <span class="contact-label">Plattform</span>
+            <strong>iPhone und iPad</strong>
+          </div>
+          <div class="app-meta-card">
+            <span class="contact-label">Verfügbarkeit</span>
+            <strong>App Store</strong>
+          </div>
+        </div>
+
+        <section>
+          <h2>Worum es geht</h2>
+          <p>
+            Der Fokus liegt auf Transparenz statt Überladung. Die App hilft dabei, Kostenbewegungen
+            greifbarer zu machen und Veränderungen nicht nur gefühlt, sondern nachvollziehbar zu
+            betrachten.
+          </p>
+        </section>
+
+        <section>
+          <h2>App öffnen</h2>
+          <p>
+            <a
+              class="button button-primary"
+              href="https://apps.apple.com/at/app/alles-teurer/id6752855855"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Im App Store ansehen
+            </a>
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</SiteLayout>

@@ -50,10 +50,10 @@ sections:
     tag: Apps
     title: Apps im Überblick
     items:
-      - name: Migräne Tracker
+      - name: Schmerztagebuch
         href: /apps/migraene-tracker
-        description: Dokumentation und Überblick für Migräneereignisse in einer
-          kompakten, alltagstauglichen App.
+        description: Tagebuch für Migräne, Kopfschmerzen und ähnliche
+          Schmerzereignisse mit Export für Arztgespräche.
         ctaLabel: Details ansehen
       - name: Alles Teurer
         href: /apps/alles-teurer

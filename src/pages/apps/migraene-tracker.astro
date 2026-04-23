@@ -7,57 +7,117 @@ const links = [
   { href: '/', label: 'Startseite' },
   { href: '/#apps', label: 'Apps' },
 ];
+
+const appStoreUrl = 'https://apps.apple.com/at/app/schmerztagebuch-migr%C3%A4ne/id6761906025';
+const appStoreBadgeUrl = 'https://apps.apple.com/assets/app-store.png';
+const screenshots = [
+  {
+    src: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/02/c3/17/02c31748-df10-5140-a823-d81b105fe8d5/iPhone_17_Pro_Max-01-startseite.png/600x1300bb.webp',
+    alt: 'Startseite von Schmerztagebuch mit schnellem Einstieg in Tagebuch und neuen Eintrag',
+  },
+  {
+    src: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e3/7c/99/e37c9979-9451-9a0e-cb04-4590cdd7187e/iPhone_17_Pro_Max-02-neuer-eintrag.png/600x1300bb.webp',
+    alt: 'Neuer Schmerzeintrag mit Typ, Zeitpunkt und Intensität',
+  },
+  {
+    src: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/85/bc/3f/85bc3f52-bc1e-ae75-841c-27250b27792a/iPhone_17_Pro_Max-03-tagebuch.png/600x1300bb.webp',
+    alt: 'Tagebuchansicht mit dokumentierten Schmerzereignissen',
+  },
+  {
+    src: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f9/02/fd/f902fdd2-7b79-305a-8950-beea29785a7c/iPhone_17_Pro_Max-04-eintragsdetail.png/600x1300bb.webp',
+    alt: 'Detailansicht eines Eintrags mit Symptomen, Triggern und Verlauf',
+  },
+];
 ---
 
 <SiteLayout
-  title="Migräne Tracker | Matthias Wallner-Géhri"
-  description="Produktseite für die App Migräne Tracker von Matthias Wallner-Géhri"
+  title="Schmerztagebuch - Migräne | Matthias Wallner-Géhri"
+  description="Produktseite für die App Schmerztagebuch - Migräne von Matthias Wallner-Géhri"
 >
   <SiteHeader brand="Matthias Wallner-Géhri" links={links} />
 
   <main class="page-shell app-shell">
     <section class="panel app-panel">
-      <div class="section-head">
-        <p class="section-tag">App</p>
-        <h1>Migräne Tracker</h1>
+      <div class="app-hero">
+        <div class="app-hero-copy">
+          <p class="section-tag">App</p>
+          <h1>Schmerztagebuch - Migräne</h1>
+          <p class="app-lede">
+            Dein persönliches Tagebuch für Migräne, Kopfschmerzen und ähnliche Schmerzereignisse.
+            Schnell dokumentieren, Muster wiederfinden und Arztgespräche besser vorbereiten.
+          </p>
+          <a
+            class="app-store-badge"
+            href={appStoreUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Schmerztagebuch - Migräne im App Store öffnen"
+          >
+            <img src={appStoreBadgeUrl} alt="Download on the App Store" width="146" height="44" />
+          </a>
+        </div>
+
+        <div class="app-hero-shot" aria-hidden="true">
+          <img src={screenshots[0].src} alt="" width="600" height="1300" />
+        </div>
       </div>
 
       <div class="app-copy">
-        <p class="app-lede">
-          Migräne Tracker unterstützt dabei, Migräneereignisse klar zu dokumentieren und
-          Entwicklungen über die Zeit nachvollziehbar festzuhalten.
-        </p>
-
         <div class="app-meta">
           <div class="app-meta-card">
             <span class="contact-label">Plattform</span>
             <strong>iPhone und iPad</strong>
           </div>
           <div class="app-meta-card">
-            <span class="contact-label">Verfügbarkeit</span>
-            <strong>App Store</strong>
+            <span class="contact-label">Kategorie</span>
+            <strong>Medizin</strong>
+          </div>
+          <div class="app-meta-card">
+            <span class="contact-label">Sprache</span>
+            <strong>Deutsch</strong>
+          </div>
+          <div class="app-meta-card">
+            <span class="contact-label">Datenschutz</span>
+            <strong>Lokale Datenhaltung als Standard</strong>
           </div>
         </div>
 
         <section>
           <h2>Worum es geht</h2>
           <p>
-            Die App ist auf einen einfachen und alltagstauglichen Ablauf ausgelegt. Statt unnötiger
-            Komplexität steht im Vordergrund, Einträge schnell zu erfassen und sie später sinnvoll
-            wiederzufinden.
+            Die App ist auf einen einfachen, alltagstauglichen Ablauf ausgelegt. Einträge halten
+            Typ, Intensität, Zeitpunkt, Symptome, Trigger, Notizen und Medikamente fest. Wenn
+            verfügbar, kann Wetterkontext ergänzt werden.
           </p>
         </section>
 
         <section>
-          <h2>App öffnen</h2>
+          <h2>Tagebuch und Export</h2>
+          <p>
+            Einträge lassen sich im Tagebuch und Kalender wiederfinden. Für Arztgespräche können
+            PDF-Berichte exportiert werden, zusätzlich sind lokale JSON5-Backups möglich.
+          </p>
+        </section>
+
+        <section class="app-screenshots" aria-label="Screenshots aus Schmerztagebuch - Migräne">
+          {screenshots.map((screenshot) => (
+            <figure class="app-screenshot">
+              <img src={screenshot.src} alt={screenshot.alt} width="600" height="1300" loading="lazy" />
+            </figure>
+          ))}
+        </section>
+
+        <section class="app-cta">
+          <h2>Im App Store laden</h2>
           <p>
             <a
-              class="button button-primary"
-              href="https://apps.apple.com/at/app/migr%C3%A4ne-tracker/id6761906025"
+              class="app-store-badge"
+              href={appStoreUrl}
               target="_blank"
               rel="noreferrer"
+              aria-label="Schmerztagebuch - Migräne im App Store öffnen"
             >
-              Im App Store ansehen
+              <img src={appStoreBadgeUrl} alt="Download on the App Store" width="146" height="44" />
             </a>
           </p>
         </section>

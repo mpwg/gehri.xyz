@@ -16,7 +16,7 @@
     "setup:github-deploy": "bash ./scripts/bootstrap-github-deploy.sh"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.1.10",
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.7.0",
     "@fontsource-variable/manrope": "^5.2.8",
